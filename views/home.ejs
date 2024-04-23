@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-4 text-white" style="background-color: #111;"> 
+    <div class="max-w-lg mx-auto bg-zinc-800 p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">CRUD Operations</h1>
+        <p class="mb-4">CRUD stands for Create, Read, Update, and Delete. These are the basic operations performed on data in a database.</p>
+        <ul class="mb-4 flex gap-3">
+            <li class="text-blue-500"><strong>Create:</strong> Inserting new data into the database.</li>
+            <li class="text-green-500"><strong>Read:</strong> Retrieving data from the database.</li>
+            <li class="text-yellow-500"><strong>Update:</strong> Modifying existing data in the database.</li>
+            <li class="text-red-500"><strong>Delete:</strong> Removing data from the database.</li>
+        </ul>
+        <p class="mb-4">Below are buttons representing each CRUD operation:</p>
+        <div class="flex gap-3">
+            <form action="/create" method="GET" class="mb-2">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Create</button>
+            </form>
+            <form action="/read" method="GET" class="mb-2">
+                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Read</button>
+            </form>
+            <form action="/update" method="GET" class="mb-2">
+                <button type="submit" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Update</button>
+            </form>
+            <form action="/delete" method="GET" class="mb-2">
+                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Delete</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
