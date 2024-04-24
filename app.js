@@ -48,7 +48,6 @@ app.post('/api/read', async (req,res)=>{
         if (readUser) {
             res.redirect(`/read?name=${readUser.name}&username=${readUser.username}&email=${readUser.email}`);
         } else {
-            // If user not found, redirect to /read without data
             res.redirect('/read');
         }
     }
@@ -59,11 +58,48 @@ app.post('/api/read', async (req,res)=>{
 })
 //^ Update Page
 app.get('/update',(req,res)=>{
-    res.render('update')
+    const {name,username,email} = req.query
+    res.render('update',{name,username,email})
 })
+//^ Update Page POST
+app.post('/api/update', async (req, res) => {
+    try {
+        const { oldEmail, newEmail } = req.body;
+        
+        const updateUser = await userModel.findOneAndUpdate(
+            { email: oldEmail }, 
+            { email: newEmail }, 
+            { new: true }            
+        );
+
+        if (updateUser) {
+            res.redirect(`/update?name=${updateUser.name}&username=${updateUser.username}&email=${updateUser.email}`);
+        } else {
+            res.redirect('/update');
+        }
+    } catch (err) {
+        res.status(500).send("Some Error Occurred");
+    }
+});
+
+
 //! Delete Page
 app.get('/delete',(req,res)=>{
-    res.render('delete')
+    const {name,username,email} = req.query;
+    res.render('delete',{name,username,email});
+})
+//! Delete Page POST
+app.post('/api/delete', async (req,res)=>{
+    try{
+        let deleteUser = await userModel.findOneAndDelete({username:req.body.username})
+        if (deleteUser) {
+            res.redirect(`/delete?name=${deleteUser.name}&username=${deleteUser.username}&email=${deleteUser.email}`);
+        } else {
+            res.redirect('/delete');
+        }
+    }catch(err){
+        res.send("Some Error Occurs")
+    }
 })
 
 app.listen(port,()=>{

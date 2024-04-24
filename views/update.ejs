@@ -12,25 +12,18 @@
 <div class="absolute inset-0 flex justify-center items-center">
     <div class="container w-1/4 mx-auto mt-10 bg-zinc-800 p-6 rounded-lg">
         <h1 class="text-2xl font-semibold mb-5 text-blue-500">Update User</h1>
-        <form action="/update/api/update" method="POST">
-            <div class="mb-6">
-                <label class="block text-emerald-700 text-sm font-bold mb-2" for="name">
-                    Name
-                </label>
-                <input class="bg-neutral-800 text-emerald-400 appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="name" type="name" placeholder="Enter Name" name="name" required>
-            </div>
-            
+        <form action="/api/update" method="POST">
             <div class="mb-4">
                 <label class="block text-emerald-700 text-sm font-bold mb-2" for="username">
-                    Username
+                    Old Email
                 </label>
-                <input class="bg-neutral-800 text-emerald-400 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter username" name="username" required>
+                <input class="bg-neutral-800 text-emerald-400 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" name="oldEmail" type="email" placeholder="Enter Your old Email" required>
             </div>
             <div class="mb-6">
                 <label class="block text-emerald-700 text-sm font-bold mb-2" for="email">
-                    Email
+                    New Email
                 </label>
-                <input class="bg-neutral-800 text-emerald-400 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Enter email" name="email" required>
+                <input class="bg-neutral-800 text-emerald-400 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" name="newEmail" type="email" placeholder="Enter Your new email" required>
             </div>
             <div class="flex items-center justify-between">
                 <button class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
@@ -38,6 +31,14 @@
                 </button>
             </div>
         </form>
+        <a href="/" class="text-blue-500">Return Home</a>
+        <% if (name) { %>
+            <p>Name: <%= name %></p>
+            <p>Username: <%= username %></p>
+            <p>Email: <%= email %></p>
+        <% } else { %>
+            <p>User not found.</p>
+        <% } %>
     </div>
 </div>
 </body>
