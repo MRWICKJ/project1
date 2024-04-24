@@ -1,8 +1,7 @@
 const express = require('express');
 require('./db/conn');
 const userModel = require('./models/usermodel');
-const { name } = require('ejs');
-const port = 3000
+const port = process.env.port || 3000;
 const app = express()
 app.set('view engine','ejs')
 app.use(express.json())
@@ -14,7 +13,6 @@ app.get('/',(req,res)=>{
 //~ Create Page
 app.get('/create',(req,res)=>{
     const { name, username, email } = req.query;
-    // Render the create.ejs template with user data
     res.render('create', { name, username, email });
 })
 //~ Create Page POST Route
